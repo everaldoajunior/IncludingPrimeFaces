@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>USERS ADMIN</title>
+</h:head>
+
+<h:body>
+
+	<ui:define name="menu">
+		<ui:include src="template/menu.xhtml"></ui:include>
+	</ui:define>
+
+	<h:form id="frmUsuarios">
+		<p:dataTable id="tbUsuarios" widgetVar="tabelaUsuarios" var="users"
+			value="#{UsersMB.listUsers}" rows="7"
+			emptyMessage="Nenhum Registro Encontrado" paginator="true">
+
+			<f:facet name="header">CONSULTA USUARIOS</f:facet>
+
+			<p:column headerText="Nome do Usuário" >
+				<h:outputText value="#{users.nome}" />
+			</p:column>
+
+			<p:column headerText="Email do Usuário" >
+				<h:outputText value="#{users.email}" />
+			</p:column>
+
+			<p:column headerText="Senha do Usuário" >
+				<h:outputText value="#{users.senha}" />
+			</p:column>
+
+			<p:column headerText="Telefone do Usuário" >
+				<h:outputText value="#{users.telefone}" />
+			</p:column>
+			
+			<p:column headerText="Opções">
+				<p:commandButton icon="ui-icon-trash"
+					oncomplete="PF('dlgforExcluir').show();"
+					update=":frmforExcluir:pnforExcluir">
+					<f:setPropertyActionListener value="#{users}"
+						target="#{UsersMB.listUsers}"></f:setPropertyActionListener>
+				</p:commandButton>
+
+				<p:commandButton icon="ui-icon-pencil"
+					oncomplete="PF('dlgforEditar').show();"
+					update=":frmforEditar:pnforEditar">
+					<f:setPropertyActionListener value="#{users}"
+						target="#{UsersMB.listUsers}"></f:setPropertyActionListener>
+				</p:commandButton>
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

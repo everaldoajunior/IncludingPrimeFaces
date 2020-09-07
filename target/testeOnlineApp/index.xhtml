@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>USERS ADMIN</title>
+</h:head>
+
+	<h:body>
+		<h:form id="frmUsuarios">
+			<p:dataTable id="tbUsuarios" emptyMessage="Nenhum Registro Encontrado" value="#{UsersMB.listUsers}"
+				var="users" paginator="true" rows="7">
+	
+				<f:facet name="header">CONSULTA USUARIOS</f:facet>
+	
+				<p:column headerText="Nome do Usuário" sortBy="#{users.nome}"/>
+				<h:outputText value="#{users.nome}" />
+	
+				<p:column headerText="Email do Usuário" sortBy="#{users.email}"/>
+				<h:outputText value="#{users.email}" />
+				
+				<p:column headerText="Senha do Usuário" sortBy="#{users.senha}"/>
+				<h:outputText value="#{users.senha}" />
+				
+				<p:column headerText="Telefone do Usuário" sortBy="#{users.telefone}" />
+				<h:outputText value="#{users.telefone}" />
+		</p:dataTable>
+		</h:form>
+	</h:body>
+</html>
