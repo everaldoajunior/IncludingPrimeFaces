@@ -10,25 +10,25 @@
 <h:body>
      <h:form>
           <p:messages id="messages" />
-          <p:panelGrid columns="2">
-                <p:outputLabel for="id" value="ID:" />
-                <p:spinner id="id" value="#{UsersMB.listUsers.id}" />
-
+          <p:panelGrid columns="2" styleClass="panelGridCenter"
+		style="text-align:center; margin: 0 auto;">
 
                 <p:outputLabel for="nome" value="Nome:" />
-                <p:inputText id="nome" value="#{UsersMB.listUsers.nome}" />
+                <p:inputText id="nome" value="#{UsuariosBean.usuarioVO.nome}" />
 
 
                 <p:outputLabel for="senha" value="Senha:" />
-                <p:inputText id="senha" value="#{UsersMB.listUsers.senha}" />
+                <p:password id="senha" value="#{UsuariosBean.usuarioVO.senha}" />
 
 
-                <p:outputLabel for="descricao" value="Email:" />
-                <p:inputTextarea id="descricao"
-                     value="#{UsersMB.usuario.email}" />
-
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{UsuariosBean.usuarioVO.email}" />
+                
+				<p:outputLabel for="telefone" value="Telefone:" />
+                <p:inputText id="telefone" value="#{UsuariosBean.usuarioVO.telefone}" />
+				
                 <p:commandButton  value="Cadastrar" icon="ui-icon-star"
-                 action="#{UsuarioMB.cadastraUsuario}" update="messages">
+                 action="#{UsuarioMB.cadastrarUsuario}" update="messages">
                 </p:commandButton>
 
           </p:panelGrid>

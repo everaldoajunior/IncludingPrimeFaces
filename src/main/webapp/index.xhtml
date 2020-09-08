@@ -7,54 +7,69 @@
 <h:head>
 	<title>USERS ADMIN</title>
 </h:head>
-
 <h:body>
+	<h:form>
 
-	<ui:define name="menu">
-		<ui:include src="template/menu.xhtml"></ui:include>
-	</ui:define>
+		<p:menubar>
 
-	<h:form id="frmUsuarios">
-		<p:dataTable id="tbUsuarios" widgetVar="tabelaUsuarios" var="users"
-			value="#{UsersMB.listUsers}" rows="7"
-			emptyMessage="Nenhum Registro Encontrado" paginator="true">
+			<p:submenu label="Arquivo">
+				<p:menuitem value="HOME" outcome="/index.xhtml" />
+				<p:menuitem value="Sair" url="#" />
+			</p:submenu>
+
+			<p:submenu label="Cadastro">
+				<p:menuitem value="Usuários" outcome="/usuarios.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Ajuda">
+				<p:menuitem value="Sobre" url="#" />
+			</p:submenu>
+
+		</p:menubar>
+
+	</h:form>
+	<h:form>
+		<p:dataTable id="tbUsuarios" widgetVar="tabelaUsuarios" rows="7"
+			emptyMessage="Nenhum Registro Encontrado" paginator="true"
+			value="#{UsuariosMB.init}">
 
 			<f:facet name="header">CONSULTA USUARIOS</f:facet>
 
-			<p:column headerText="Nome do Usuário" >
-				<h:outputText value="#{users.nome}" />
+			<p:column headerText="Nome do Usuário">
+				<h:outputText value="#{UsuariosMB.listUsers.nome}" />
 			</p:column>
 
-			<p:column headerText="Email do Usuário" >
-				<h:outputText value="#{users.email}" />
+			<p:column headerText="Email do Usuário">
+				<h:outputText value="#{UsuariosMB.listUsers.email}" />
 			</p:column>
 
-			<p:column headerText="Senha do Usuário" >
-				<h:outputText value="#{users.senha}" />
+			<p:column headerText="Senha do Usuário">
+				<h:outputText value="#{UsuariosMB.listUsers.senha}" />
 			</p:column>
 
-			<p:column headerText="Telefone do Usuário" >
-				<h:outputText value="#{users.telefone}" />
+			<p:column headerText="Telefone do Usuário">
+				<h:outputText value="#{UsuariosMB.listUsers.telefone}" />
 			</p:column>
-			
-			<p:column headerText="Opções">
+
+			<!-- <p:column headerText="Opções">
 				<p:commandButton icon="ui-icon-trash"
 					oncomplete="PF('dlgforExcluir').show();"
 					update=":frmforExcluir:pnforExcluir">
 					<f:setPropertyActionListener value="#{users}"
-						target="#{UsersMB.listUsers}"></f:setPropertyActionListener>
+						target="#{UsuariosMB.listUsers}"></f:setPropertyActionListener>
 				</p:commandButton>
 
 				<p:commandButton icon="ui-icon-pencil"
 					oncomplete="PF('dlgforEditar').show();"
 					update=":frmforEditar:pnforEditar">
 					<f:setPropertyActionListener value="#{users}"
-						target="#{UsersMB.listUsers}"></f:setPropertyActionListener>
+						target="#{UsuariosMB.listUsers}"></f:setPropertyActionListener>
 				</p:commandButton>
-			</p:column>
-			
+			</p:column> -->
+
 		</p:dataTable>
 	</h:form>
-
 </h:body>
+
+
 </html>
